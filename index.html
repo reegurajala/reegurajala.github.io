@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reevan Gurajala — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f9f8f5;
+    --surface: #ffffff;
+    --ink: #1a1a18;
+    --ink-muted: #6b6b65;
+    --ink-faint: #b0afa8;
+    --accent: #1a1a18;
+    --accent-warm: #c8a96e;
+    --border: #e8e7e2;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(249,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 80px;
+    position: relative;
+  }
+
+  .hero-index {
+    position: absolute;
+    top: 120px;
+    right: 60px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.12em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--ink-muted);
+    max-width: 440px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn:hover { background: var(--ink); color: var(--bg); }
+
+  .btn-fill { background: var(--ink); color: var(--bg); }
+  .btn-fill:hover { background: transparent; color: var(--ink); }
+
+  .hero-divider {
+    position: absolute;
+    bottom: 0; left: 60px; right: 60px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+
+  .about-text p {
+    color: var(--ink-muted);
+    font-size: 15px;
+    margin-bottom: 16px;
+    max-width: 480px;
+  }
+
+  .skills-block { padding-top: 8px; }
+
+  .skill-group { margin-bottom: 32px; }
+
+  .skill-group-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    background: var(--surface);
+    transition: all 0.15s;
+  }
+
+  .tag:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 0; }
+
+  .project-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 40px;
+    align-items: start;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .project-item:first-child { border-top: 1px solid var(--border); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    padding-top: 4px;
+  }
+
+  .project-content h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-content p {
+    color: var(--ink-muted);
+    font-size: 14px;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .project-findings {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: var(--bg);
+    border-left: 2px solid var(--accent-warm);
+  }
+
+  .project-findings-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 8px;
+  }
+
+  .project-findings p {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .project-stack span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+  }
+
+  .project-link {
+    padding-top: 4px;
+  }
+
+  .project-link a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .project-link a:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+
+  .exp-meta { padding-top: 3px; }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .exp-org {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .exp-content h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .exp-content ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .exp-content li {
+    font-size: 14px;
+    color: var(--ink-muted);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .exp-content li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+  }
+
+  /* CONTACT */
+  .contact-inner {
+    max-width: 600px;
+  }
+
+  .contact-inner h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .contact-inner p {
+    color: var(--ink-muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 24px 60px; }
+    .hero-index { display: none; }
+    section { padding: 60px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-item { grid-template-columns: 1fr; gap: 12px; }
+    .project-link { display: none; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">RG.portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <span class="hero-index">Data Science / Analytics</span>
+  <p class="hero-tag">Available for internships &amp; new opportunities</p>
+  <h1>Reevan<br>Gurajala<br><em>Data Analyst</em></h1>
+  <p class="hero-sub">CS student at UNC Charlotte, concentrating in Data Science. I dig into data until I actually understand what's driving the outcome, not just what happened.</p>
+  <div class="hero-links">
+    <a class="btn btn-fill" href="mailto:reegurajala@gmail.com">Get in touch</a>
+    <a class="btn" href="https://github.com" target="_blank">GitHub</a>
+    <a class="btn" href="https://linkedin.com" target="_blank">LinkedIn</a>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<section id="about">
+  <p class="section-label">About</p>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <h2>Investigative by nature,<br>analytical by training.</h2>
+      <p>I'm a Computer Science student at UNC Charlotte with a concentration in Data Science. My projects tend to start with a question I genuinely can't answer yet, and end when I've gone deep enough to actually explain what's going on.</p>
+      <p>Whether it's hospital readmission patterns across 18,000 records or competitive viability across 1,025 Pokemon, I'm drawn to the same problem: what's really driving this outcome, and how do I prove it?</p>
+      <p>Certified in OCI, SQL, Pandas, and Data Visualization. Graduating December 2025.</p>
+    </div>
+    <div class="skills-block">
+      <div class="skill-group">
+        <p class="skill-group-label">Analytics &amp; Visualization</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">seaborn</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Development</p>
+        <div class="skill-tags">
+          <span class="tag">Flask</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">SQLAlchemy</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">pytest</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-label">Cloud &amp; Certifications</p>
+        <div class="skill-tags">
+          <span class="tag">AWS</span>
+          <span class="tag">Oracle OCI</span>
+          <span class="tag">HackerRank SQL</span>
+          <span class="tag">Kaggle Pandas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <div class="projects-list">
+
+    <div class="project-item fade-up">
+      <p class="project-num">01</p>
+      <div class="project-content">
+        <h3>DribbleData</h3>
+        <p>A live web platform surfacing season-by-season performance trends across 500+ NBA players. Built a structured SQLite database and query layer to serve clean, analysis-ready data, then exposed side-by-side statistical comparisons for fantasy analysts. Validated end-to-end data integrity with a full pytest suite covering SQL injection, XSS, and command injection vectors.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key output</p>
+          <p>Buy-low/sell-high signals based on real last-5-game comparisons across points, rebounds, assists, steals, and blocks for any two players.</p>
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>Flask</span><span>SQL</span><span>SQLite</span><span>SQLAlchemy</span><span>JavaScript</span><span>Chart.js</span><span>pytest</span><span>OpenAI API</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">02</p>
+      <div class="project-content">
+        <h3>Hospital Readmissions Analysis</h3>
+        <p>Analyzed 18,330 CMS hospital records using SQL with window functions, CTEs, and CASE WHEN tier classification to identify excess readmission patterns across U.S. facilities. Visualized state, condition, and tier findings to surface systemic underperformers.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key findings</p>
+          <p>Hip/Knee replacements emerged as the highest-risk condition at 23% excess readmission. Massachusetts flagged as a systemic underperformer across all analyses.</p>
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>SQL</span><span>pandas</span><span>matplotlib</span><span>seaborn</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">03</p>
+      <div class="project-content">
+        <h3>Pokemon Competitive Analysis Series</h3>
+        <p>A three-part analysis across 1,025 Pokemon examining competitive viability through base stats, Smogon tier placement, and move pool access. Merged data from PokeAPI and a custom Smogon web scraper, then built a custom Power Score metric to test what actually drives tier placement.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key findings</p>
+          <p>Move pool access is no longer a competitive differentiator after 30 years of TM distribution. Stats and abilities are the real drivers. Gen 9 Paradox mechanics produce regular Pokemon that rival Legendaries.</p>
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>pandas</span><span>matplotlib</span><span>seaborn</span><span>BeautifulSoup</span><span>PokeAPI</span><span>Jupyter</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">04</p>
+      <div class="project-content">
+        <h3>City Lifestyle Data Mining</h3>
+        <p>Exploratory data analysis on multi-variable city lifestyle datasets, applying feature selection and statistical preprocessing to surface correlations between income class and environmental indicators. Designed visualizations and communicated findings through structured storytelling.</p>
+        <div class="project-stack">
+          <span>Python</span><span>pandas</span><span>Matplotlib</span><span>HTML</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <div class="exp-list">
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-date">May 2025 — Aug 2025</p>
+        <p class="exp-org">UNC Charlotte</p>
+      </div>
+      <div class="exp-content">
+        <h3>Research Assistant</h3>
+        <ul>
+          <li>Designed and implemented multiple game modes for an educational CS game in Java and JavaScript, contributing to frontend development and iterative feature decisions.</li>
+          <li>Collaborated across a small research team to prototype, test, and refine game mechanics based on user feedback.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <p class="exp-date">Jan 2025 — Dec 2025</p>
+        <p class="exp-org">UNC Charlotte</p>
+      </div>
+      <div class="exp-content">
+        <h3>Instructional Assistant</h3>
+        <ul>
+          <li>Supported 50–60 students in Logic and Algorithms, clarifying pseudocode, algorithmic thinking, and core CS concepts during office hours.</li>
+          <li>Evaluated assignments and exams with consistent, structured feedback to reinforce course standards.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <div class="contact-inner fade-up">
+    <h2>Let's work<br><em>together.</em></h2>
+    <p>Open to data analytics internships and new grad roles. Based in Charlotte, NC. US Citizen.</p>
+    <div class="contact-links">
+      <a class="btn btn-fill" href="mailto:reegurajala@gmail.com">reegurajala@gmail.com</a>
+      <a class="btn" href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a class="btn" href="https://github.com" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Reevan Gurajala &copy; 2025</p>
+  <p>B.S. Computer Science — Data Science &nbsp;·&nbsp; UNC Charlotte &nbsp;·&nbsp; Dec 2025</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
