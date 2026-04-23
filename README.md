@@ -1,6 +1,6 @@
 # reegurajala.github.io
 
-Personal portfolio site for Reevan Gurajala — Data Analyst / CS Student at UNC Charlotte.
+Personal portfolio site for Reevan Gurajala: Data Analyst / CS Student at UNC Charlotte.
 
 Live at: [reegurajala.github.io](https://reegurajala.github.io)
 
