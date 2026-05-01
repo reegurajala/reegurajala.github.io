@@ -320,6 +320,27 @@
     border: 1px solid var(--border);
   }
 
+  .project-charts {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .project-charts img {
+    width: calc(50% - 6px);
+    max-width: 260px;
+    height: 140px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    filter: grayscale(20%);
+    transition: filter 0.2s;
+  }
+
+  .project-charts img:hover {
+    filter: grayscale(0%);
+  }
+
   .project-link {
     padding-top: 4px;
   }
@@ -484,8 +505,8 @@
   <p class="hero-sub">CS student at UNC Charlotte, concentrating in Data Science. I dig into data until I actually understand what's driving the outcome, not just what happened.</p>
   <div class="hero-links">
     <a class="btn btn-fill" href="mailto:reegurajala@gmail.com">Get in touch</a>
-    <a class="btn" href="https://github.com/reegurajala" target="_blank">GitHub</a>
-    <a class="btn" href="https://www.linkedin.com/in/reevan-gurajala-640b45295/" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://github.com" target="_blank">GitHub</a>
+    <a class="btn" href="https://linkedin.com" target="_blank">LinkedIn</a>
   </div>
   <div class="hero-divider"></div>
 </section>
@@ -496,7 +517,7 @@
     <div class="about-text">
       <h2>Investigative by nature,<br>analytical by training.</h2>
       <p>I'm a Computer Science student at UNC Charlotte with a concentration in Data Science. My projects tend to start with a question I genuinely can't answer yet, and end when I've gone deep enough to actually explain what's going on.</p>
-      <p>Whether it's hospital readmission patterns across 18,000 records or competitive viability across 1,025 Pokemon, I'm drawn to the same problem: what's really driving this outcome, and how do I prove it?</p>
+      <p>Whether it's hospital readmission patterns across 18,000 records, 4,300+ global tech layoff events, or competitive viability across 1,025 Pokemon, I'm drawn to the same problem: what's really driving this outcome, and how do I prove it?</p>
       <p>Certified in OCI, SQL, Pandas, and Data Visualization. Graduating December 2025.</p>
     </div>
     <div class="skills-block">
@@ -545,6 +566,62 @@
     <div class="project-item fade-up">
       <p class="project-num">01</p>
       <div class="project-content">
+        <h3>Tech Layoffs Analysis (2020–2026)</h3>
+        <p>End-to-end SQL and Python analysis of 4,361 global tech layoff events sourced from layoffs.fyi, covering the full arc of the mass layoff wave from COVID-19 through 2026. Wrote 7 analytical SQL queries using CTEs, nested window functions, and time-series aggregations to identify industry, company, and geographic patterns.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key findings</p>
+          <p>2023 peaked at 264,320 layoffs across 749 companies. Amazon led all companies with 58,124 cuts across 13 separate rounds. 2026 is already on pace to exceed 2024 with 92,272 layoffs in just 4 months.</p>
+        </div>
+        <div class="project-charts">
+          <img src="https://raw.githubusercontent.com/reegurajala/tech-layoffs-analysis/main/chart1_layoffs_by_year.png" alt="Layoffs by Year" onerror="this.style.display='none'">
+          <img src="https://raw.githubusercontent.com/reegurajala/tech-layoffs-analysis/main/chart3_rolling_layoffs.png" alt="Rolling Layoffs" onerror="this.style.display='none'">
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>SQL</span><span>SQLite</span><span>pandas</span><span>matplotlib</span><span>seaborn</span><span>Jupyter</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com/reegurajala/tech-layoffs-analysis" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">02</p>
+      <div class="project-content">
+        <h3>Hospital Readmissions Analysis</h3>
+        <p>End-to-end SQL, Python, and Power BI analysis of 18,330 CMS hospital records using window functions, CTEs, and CASE WHEN tier classification to identify excess readmission patterns across U.S. facilities. Built an interactive 3-page Power BI dashboard with state-level comparisons, condition breakdowns, and hospital-level filtering.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key findings</p>
+          <p>Hip/Knee replacements are the highest-risk condition at 23% of hospitals classified High Risk. Massachusetts flagged as a systemic underperformer across every analysis — state averages, rate gaps, and worst hospital rankings.</p>
+        </div>
+        <div class="project-charts">
+          <img src="https://raw.githubusercontent.com/reegurajala/hospital-readmissions-analysis/main/chart1_states.png" alt="Readmissions by State" onerror="this.style.display='none'">
+          <img src="https://raw.githubusercontent.com/reegurajala/hospital-readmissions-analysis/main/chart3_tiers.png" alt="Performance Tiers" onerror="this.style.display='none'">
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>SQL</span><span>SQLite</span><span>pandas</span><span>matplotlib</span><span>seaborn</span><span>Power BI</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com/reegurajala/hospital-readmissions-analysis" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">03</p>
+      <div class="project-content">
+        <h3>Pokemon Competitive Analysis</h3>
+        <p>A multi-part analysis across 1,025 Pokemon examining competitive viability through base stats, Smogon tier placement, and move pool access. Merged data from PokeAPI and a custom Smogon web scraper, then built a custom Power Score metric to test what actually drives tier placement.</p>
+        <div class="project-findings">
+          <p class="project-findings-label">Key findings</p>
+          <p>Move pool access is no longer a competitive differentiator after 30 years of TM distribution. Stats and abilities are the real drivers. Gen 9 Paradox mechanics produce regular Pokemon that rival Legendaries.</p>
+        </div>
+        <div class="project-stack">
+          <span>Python</span><span>pandas</span><span>matplotlib</span><span>seaborn</span><span>BeautifulSoup</span><span>PokeAPI</span><span>Jupyter</span>
+        </div>
+      </div>
+      <div class="project-link"><a href="https://github.com/reegurajala" target="_blank">View repo ↗</a></div>
+    </div>
+
+    <div class="project-item fade-up">
+      <p class="project-num">04</p>
+      <div class="project-content">
         <h3>DribbleData</h3>
         <p>A live web platform surfacing season-by-season performance trends across 500+ NBA players. Built a structured SQLite database and query layer to serve clean, analysis-ready data, then exposed side-by-side statistical comparisons for fantasy analysts. Validated end-to-end data integrity with a full pytest suite covering SQL injection, XSS, and command injection vectors.</p>
         <div class="project-findings">
@@ -555,51 +632,7 @@
           <span>Python</span><span>Flask</span><span>SQL</span><span>SQLite</span><span>SQLAlchemy</span><span>JavaScript</span><span>Chart.js</span><span>pytest</span><span>OpenAI API</span>
         </div>
       </div>
-      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
-    </div>
-
-    <div class="project-item fade-up">
-      <p class="project-num">02</p>
-      <div class="project-content">
-        <h3>Hospital Readmissions Analysis</h3>
-        <p>Analyzed 18,330 CMS hospital records using SQL with window functions, CTEs, and CASE WHEN tier classification to identify excess readmission patterns across U.S. facilities. Visualized state, condition, and tier findings to surface systemic underperformers.</p>
-        <div class="project-findings">
-          <p class="project-findings-label">Key findings</p>
-          <p>Hip/Knee replacements emerged as the highest-risk condition at 23% excess readmission. Massachusetts flagged as a systemic underperformer across all analyses.</p>
-        </div>
-        <div class="project-stack">
-          <span>Python</span><span>SQL</span><span>pandas</span><span>matplotlib</span><span>seaborn</span>
-        </div>
-      </div>
-      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
-    </div>
-
-    <div class="project-item fade-up">
-      <p class="project-num">03</p>
-      <div class="project-content">
-        <h3>Pokemon Competitive Analysis Series</h3>
-        <p>A three-part analysis across 1,025 Pokemon examining competitive viability through base stats, Smogon tier placement, and move pool access. Merged data from PokeAPI and a custom Smogon web scraper, then built a custom Power Score metric to test what actually drives tier placement.</p>
-        <div class="project-findings">
-          <p class="project-findings-label">Key findings</p>
-          <p>Move pool access is no longer a competitive differentiator after 30 years of TM distribution. Stats and abilities are the real drivers. Gen 9 Paradox mechanics produce regular Pokemon that rival Legendaries.</p>
-        </div>
-        <div class="project-stack">
-          <span>Python</span><span>pandas</span><span>matplotlib</span><span>seaborn</span><span>BeautifulSoup</span><span>PokeAPI</span><span>Jupyter</span>
-        </div>
-      </div>
-      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
-    </div>
-
-    <div class="project-item fade-up">
-      <p class="project-num">04</p>
-      <div class="project-content">
-        <h3>City Lifestyle Data Mining</h3>
-        <p>Exploratory data analysis on multi-variable city lifestyle datasets, applying feature selection and statistical preprocessing to surface correlations between income class and environmental indicators. Designed visualizations and communicated findings through structured storytelling.</p>
-        <div class="project-stack">
-          <span>Python</span><span>pandas</span><span>Matplotlib</span><span>HTML</span>
-        </div>
-      </div>
-      <div class="project-link"><a href="https://github.com" target="_blank">View repo ↗</a></div>
+      <div class="project-link"><a href="https://github.com/reegurajala" target="_blank">View repo ↗</a></div>
     </div>
 
   </div>
@@ -654,7 +687,7 @@
 </section>
 
 <footer>
-  <p>Reevan Gurajala &copy; 2025</p>
+  <p>Reevan Gurajala &copy; 2026</p>
   <p>B.S. Computer Science — Data Science &nbsp;·&nbsp; UNC Charlotte &nbsp;·&nbsp; Dec 2025</p>
 </footer>
 
